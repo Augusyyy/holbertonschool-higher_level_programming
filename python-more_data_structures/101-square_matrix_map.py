@@ -1,9 +1,13 @@
 #!/usr/bin/python3
 def square_matrix_map(matrix=[]):
-    new_matrix = []
-    for i in range(len(matrix)):
-        new_matrix_sub = []
-        for j in range(len(matrix[i])):
-            new_matrix_sub.append(int(matrix[i][j]) ** 2)
-        new_matrix.append(new_matrix_sub)
-    return new_matrix
+    return (list(map(lambda x: list(map(lambda y: y ** 2, x[:])), matrix)))
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+new_matrix = square_matrix_map(matrix)
+print(new_matrix)
+print(matrix)
