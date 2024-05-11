@@ -31,10 +31,6 @@ class Square:
             size (int): defaults to 0 if none; don't use __size to call setter
             position (int): tuple of two positive integers
         """
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-        elif size < 0:
-            raise ValueError("size must be >= 0")
         self.__size = size
         self.__position = position
 

@@ -104,27 +104,30 @@ class SinglyLinkedList:
        """
         new = Node(value)
         if self.__head is None:
-            new.next_node = None
             self.__head = new
-        elif self.__head.data > value:
+            return
+
+        tmp = self.__head
+        if new.data < tmp.data:
             new.next_node = self.__head
             self.__head = new
-        else:
-            tmp = self.__head
-            while (tmp.next_node is not None and
-                    tmp.next_node.data < value):
-                tmp = tmp.next_node
-            new.next_node = tmp.next_node
-            tmp.next_node = new
+            return
+
+        while (tmp.next_node is not None) and (new.data > tmp.next_node.data):
+            tmp = tmp.next_node
+        new.next_node = tmp.next_node
+        tmp.next_node = new
+        return
 
     def __str__(self):
         """
-            String representation of singly linked list needed to print
+        String representation of singly linked list needed to print
         """
         string = ""
-        values = []
         tmp = self.__head
         while tmp is not None:
-            values.append(str(tmp.data))
+            string += str(tmp.data)
             tmp = tmp.next_node
-        return ('\n'.join(values))
+            if tmp is not None:
+                string += "\n"
+        return string
