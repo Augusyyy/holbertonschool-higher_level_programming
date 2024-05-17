@@ -36,7 +36,3 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError("division by zero")
     return [[round(nb / div, 2) for nb in row] for row in matrix]
-
-
-matrix = [[1, '9'], [4, 5]]
-matrix_divided(matrix)
