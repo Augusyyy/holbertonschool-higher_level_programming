@@ -7,12 +7,18 @@ This module supplies one function, matrix_divided().
 
 
 def matrix_divided(matrix, div):
-    """
-    Return a new matrix where each element has been divided by div.
+    """Divide all elements of a matrix.
 
     Args:
-        matrix (list): list of lists of integers or floats.
-        div (int, float): the divider, >= 0.
+        matrix (list): A list of lists of ints or floats.
+        div (int/float): The divisor.
+    Raises:
+        TypeError: If the matrix contains non-numbers.
+        TypeError: If the matrix contains rows of different sizes.
+        TypeError: If div is not an int or float.
+        ZeroDivisionError: If div is 0.
+    Returns:
+        A new matrix representing the result of the division.
     """
     if (not isinstance(matrix, list) or matrix == [] or
             not all(isinstance(row, list) for row in matrix) or
