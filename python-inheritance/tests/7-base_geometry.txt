@@ -1,81 +1,112 @@
-Using class ``BaseGeometry``
------------------------
+Importing the function from the module:
+        >>> BG = __import__("7-base_geometry").BaseGeometry
 
-Class BaseGeometry contains functions that validates given parameters
-Currently contains function area(): not implemented
-Currently contains function integer_validator(name, value):
-  - Validates `value` if it is an integer
-  - Returns nothing if True
+Checking for module docstring:
+         >>> m = __import__("7-base_geometry").__doc__
+         >>> len(m) > 1
+         True
 
-First import class ``BaseGeometry``
+Checking for class docstring:
+         >>> c = __import__("7-base_geometry").BaseGeometry.__doc__
+         >>> len(c) > 1
+         True
 
-    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+Checking for method docstring:
+	  >>> mod1 = __import__("7-base_geometry").BaseGeometry.area.__doc__
+	  >>> len(mod1) > 1
+	  True
+	  >>> mod2 = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+      >>> len(mod2) > 1
+      True
 
-Now use it:
+Checking for area failure:
+	  >>> b = BG()
+	  >>> b.area()
+	  Traceback (most recent call last):
+	  ...
+	  Exception: area() is not implemented
 
-Function area():
-    >>> bg = BaseGeometry()
-    >>> bg.area()
-    Traceback (most recent call last):
-    ...
-    Exception: area() is not implemented
+Checking too many arguments for area:
+	  >>> b.area(1)
+	  Traceback (most recent call last):
+          ...
+	  TypeError: area() takes 1 positional argument but 2 were given
 
-Function integer_validator basic usage:
-    >>> bg.integer_validator("holberton", 98)
+Checking integer validator for passing integer:
+	  >>> b.integer_validator("integer", 1)
 
-Function integer_validator 0 input usage:
-    >>> bg.integer_validator("holberton", 0)
-    Traceback (most recent call last):
-    ...
-    ValueError: holberton must be greater than 0
+Checking for integer == 0:
+	  >>> b.integer_validator("integer", 0)
+	  Traceback (most recent call last):
+          ...
+          ValueError: integer must be greater than 0
 
-Function integer_validator negative input usage:
-    >>> bg.integer_validator("holberton", -1)
-    Traceback (most recent call last):
-    ...
-    ValueError: holberton must be greater than 0
+Checking for integer < 0;
+	  >>> b.integer_validator("integer", -5)
+	  Traceback (most recent call last):
+          ...
+          ValueError: integer must be greater than 0
 
-Function integer_validator non int input usage:
-    >>> bg.integer_validator("holberton", "school")
-    Traceback (most recent call last):
-    ...
-    TypeError: holberton must be an integer
+Checking for non-integer types:
+	  >>> b.integer_validator("bool", True)
+	  Traceback (most recent call last):
+          ...
+          TypeError: bool must be an integer
+	  >>> b.integer_validator("float", 1.5)
+          Traceback (most recent call last):
+          ...
+          TypeError: float must be an integer
+	  >>> b.integer_validator("complex", complex(1, 1))
+          Traceback (most recent call last):
+          ...
+          TypeError: complex must be an integer
+	  >>> b.integer_validator("string", "hello")
+          Traceback (most recent call last):
+          ...
+          TypeError: string must be an integer
+	  >>> b.integer_validator("tuple", (1, 2))
+          Traceback (most recent call last):
+          ...
+          TypeError: tuple must be an integer
+	  >>> b.integer_validator("list", [1, 2, 3])
+	  Traceback (most recent call last):
+          ...
+          TypeError: list must be an integer
+	  >>> b.integer_validator("dict", {"key": "value"})
+          Traceback (most recent call last):
+          ...
+          TypeError: dict must be an integer
+	  >>> b.integer_validator("set", {"hello", "world"})
+          Traceback (most recent call last):
+          ...
+          TypeError: set must be an integer
+	  >>> b.integer_validator("frozenset", frozenset(["hello", "world"]))
+          Traceback (most recent call last):
+          ...
+          TypeError: frozenset must be an integer
+	  >>> b.integer_validator("bytes", b"bytes")
+          Traceback (most recent call last):
+          ...
+          TypeError: bytes must be an integer
+	  >>> b.integer_validator("bytearrays", bytearray(b"bytes"))
+          Traceback (most recent call last):
+          ...
+          TypeError: bytearrays must be an integer
 
-Function integer_validator infinity input usage:
-    >>> bg.integer_validator("holberton", float("inf"))
-    Traceback (most recent call last):
-    ...
-    TypeError: holberton must be an integer
+Checking for no arguments to integer_validator:
+	  >>> b.integer_validator()
+	  Traceback (most recent call last):
+          ...
+	  TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
-Function integer_validator large int input usage:
-    >>> bg.integer_validator("holberton", 9999999999999999999999999)
+Checking for only 1 argument to integer_validator:
+	  >>> b.integer_validator("integer")
+	  Traceback (most recent call last):
+          ...
+	  TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-Function integer_validator float input usage:
-    >>> bg.integer_validator("holberton", 90.8)
-    Traceback (most recent call last):
-    ...
-    TypeError: holberton must be an integer
-
-Function integer_validator list usage:
-    >>> bg.integer_validator("holberton", [90])
-    Traceback (most recent call last):
-    ...
-    TypeError: holberton must be an integer
-
-Function integer_validator no input usage:
-    >>> bg.integer_validator()
-    Traceback (most recent call last):
-    ...
-    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
-
-Function integer_validator negative input usage:
-    >>> bg.integer_validator("age", (4,))
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
-
-Function integer_validator negative input usage:
-    >>> bg.integer_validator("age", True)
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+Checking for too many arguments:
+	  >>> b.integer_validator("integer", 1, 2)
+	  Traceback (most recent call last):
+          ...
+	  TypeError: integer_validator() takes 3 positional arguments but 4 were given
