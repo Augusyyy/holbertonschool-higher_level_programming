@@ -1,6 +1,5 @@
-"""
-Module for write_file method.
-"""
+#!/usr/bin/python3
+"""Module for write_file method."""
 
 
 def write_file(filename="", text=""):
