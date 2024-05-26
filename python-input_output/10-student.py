@@ -16,5 +16,3 @@ class Student:
             return {k: v for k, v in self.__dict__.items() if k in attrs}
         else:
             return self.__dict__.copy()
-
-student = Student('')
