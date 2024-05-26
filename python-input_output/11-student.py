@@ -12,7 +12,7 @@ class Student:
 
     def to_json(self, attrs=None):
         """Retrieves dictionary with filter."""
-        if type(attrs) is list and all([type(x) is not str for x in attrs]):
+        if type(attrs) is list and all([type(x) is str for x in attrs]):
             return {k: v for k, v in self.__dict__.items() if k in attrs}
         else:
             return self.__dict__.copy()
