@@ -29,4 +29,4 @@ class CustomObject:
             with open(filename, "rb") as f:
                 return pickle.load(f)
         except EOFError:
-            return {}
+            return None
