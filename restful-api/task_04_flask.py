@@ -61,7 +61,7 @@ def add_user():
     data = request.get_json()
 
     if 'username' not in data:
-        return jsonify({"error": "Username not found"}), 404
+        return jsonify({"error": "User not found"}), 404
 
     username = data.get('username')
     if username in users:
