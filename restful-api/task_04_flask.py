@@ -47,9 +47,8 @@ def get_username(username):
     return user info
     content-type is application/json
     """
-    user = users[username]
-    if user:
-        return jsonify(user)
+    if username in users:
+        return jsonify(users[username])
     else:
         return jsonify({"error": "User not found"}), 404
 
