@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 users = {}
 
+
 @app.route('/')
 def home():
     """
@@ -55,6 +56,8 @@ def get_username(username):
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
+    """add user"""
+
     data = request.get_json()
 
     if 'username' not in data:
@@ -79,6 +82,7 @@ def add_user():
                 'city': data['city']
             }
         }), 201
+
 
 if __name__ == '__main__':
     app.run()
