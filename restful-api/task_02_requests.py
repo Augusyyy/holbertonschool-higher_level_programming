@@ -15,7 +15,7 @@ def fetch_and_print_posts():
     """
     url = 'https://jsonplaceholder.typicode.com/posts'
     response = requests.get(url)
-    print("Status Code: ", response.status_code)
+    print("Status Code:", response.status_code)
     if response.status_code == 200:
         list_data = response.json()
         for post in list_data:
@@ -38,3 +38,5 @@ def fetch_and_save_posts():
             writer.writeheader()
             for post in list_data:
                 writer.writerow({'id':post['id'], 'title': post['title'], 'body': post['body']})
+
+fetch_and_print_posts()

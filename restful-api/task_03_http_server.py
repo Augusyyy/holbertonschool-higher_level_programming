@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """ a simple  http.server for testing"""
-import http.server
+from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-import socketserver
 
 
-class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
+class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     """Step 1: Create a subclass of http.server.BaseHTTPRequestHandler"""
 
     def do_GET(self):
@@ -36,7 +35,7 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 
 """Step 3: Start the server on a specific port (8000)"""
 PORT = 8000
-
-with socketserver.TCPServer(('', PORT), SimpleHTTPRequestHandler) as httpd:
-    print(f"Serving on port {PORT}")
-    httpd.serve_forever()
+if __name__ == "__main__":
+    with HTTPServer(('localhost', PORT), SimpleHTTPRequestHandler) as httpd:
+        print(f"Serving on port {PORT}")
+        httpd.serve_forever()
