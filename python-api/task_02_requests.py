@@ -23,6 +23,10 @@ def fetch_and_print_posts():
 
 
 def fetch_and_save_posts():
+    """
+    Print the status code of the response i.e. Status Code:
+    :return:
+    """
     url = 'https://jsonplaceholder.typicode.com/posts'
     response = requests.get(url)
     print("Status Code: ", response.status_code)
@@ -34,9 +38,3 @@ def fetch_and_save_posts():
             writer.writeheader()
             for post in list_data:
                 writer.writerow({'id':post['id'], 'title': post['title'], 'body': post['body']})
-
-
-
-
-fetch_and_print_posts()
-fetch_and_save_posts()

@@ -34,7 +34,7 @@ def serialize_to_xml(dictionary, filename):
 
     # Create an ElementTree object and write it to the file
     tree = ET.ElementTree(root)
-    tree.write(filename, encoding='utf-8', xml_declaration=True)
+    tree.write(filename)
 
 
 def deserialize_from_xml(filename):
@@ -63,3 +63,7 @@ def deserialize_from_xml(filename):
     # Build the dictionary from the root element
     elements = parse_element(root)
     return elements
+
+
+
+serialize_to_xml({},"test_empty.xml")
