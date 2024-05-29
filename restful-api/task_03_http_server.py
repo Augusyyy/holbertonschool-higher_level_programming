@@ -27,10 +27,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(b"OK")
         else:
             self.send_response(404)
-            self.send_header("Content-type", "application/json")
             self.end_headers()
-            error_message = {"error": "Not Found"}
-            self.wfile.write(json.dumps(error_message).encode())
 
 
 """Step 3: Start the server on a specific port (8000)"""

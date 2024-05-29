@@ -51,7 +51,7 @@ def get_username(username):
     #     "jane": {"name": "Jane", "age": 28, "city": "Los Angels"},
     #     "john": {"name": "John", "age": 30, "city": "New York"}
     # }
-    if username in users:
+    if username in users.keys():
         return jsonify(users[username])
         # return json.dumps(users[username]), 200, {"Content-Type": "application/json"}
     else:
