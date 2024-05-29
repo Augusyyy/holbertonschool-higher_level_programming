@@ -49,19 +49,24 @@ def get_username(username):
     """
     user = users[username]
     if user:
-        return jsonify(users[username])
+        return jsonify(user)
     else:
-        return jsonify("User does not exist"), 404
+        return jsonify({"error": "User not found"}), 404
 
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
     data = request.get_json()
     username = data.get('username')
+
+    if username is None:
+        jsonify({"error": "User not found"}), 404
+
     if username in users:
         return jsonify({"error": "User already exists"}), 400
 
-    users[data["username"]] = {
+    users[username] = {
+                'username': data["username"],
                 'name': data['name'],
                 'age': data['age'],
                 'city': data['city']
@@ -74,7 +79,7 @@ def add_user():
                 'age': data['age'],
                 'city': data['city']
             }
-        })
+        }), 201
 
 if __name__ == '__main__':
     app.run()
