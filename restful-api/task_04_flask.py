@@ -5,10 +5,7 @@ from flask import jsonify
 
 app = Flask(__name__)
 
-users = {
-    "jane": {"name": "Jane", "age": 28, "city": "Los Angeles"},
-    "john": {"name": "John", "age": 30, "city": "New York"}
-}
+users = {}
 
 @app.route('/')
 def home():
@@ -50,10 +47,11 @@ def get_username(username):
     return user info
     content-type is application/json
     """
-    if username in users.keys():
+    user = users[username]
+    if user:
         return jsonify(users[username])
     else:
-        return jsonify({"error": "User not found"}), 404
+        return jsonify("User does not exist"), 404
 
 
 @app.route('/add_user', methods=['POST'])
@@ -63,13 +61,20 @@ def add_user():
     if username in users:
         return jsonify({"error": "User already exists"}), 400
 
-    users[username] = {
+    users[data["username"]] = {
                 'name': data['name'],
                 'age': data['age'],
                 'city': data['city']
             }
-    return jsonify({"message": "User added", "user": users[username]}), 201
-
+    return jsonify({
+        'message': 'User added',
+        'user': {
+                'username': data["username"],
+                'name': data['name'],
+                'age': data['age'],
+                'city': data['city']
+            }
+        })
 
 if __name__ == '__main__':
     app.run()

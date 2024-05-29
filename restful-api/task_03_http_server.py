@@ -21,13 +21,10 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
         elif self.path == '/status':
-            status_data = {
-                "status": "OK"
-            }
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(json.dumps(status_data).encode('utf-8'))
+            self.wfile.write(b"OK")
         elif self.path == '/info':
             info_data = {
                 "version": "1.0",
