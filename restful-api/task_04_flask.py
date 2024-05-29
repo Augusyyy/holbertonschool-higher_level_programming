@@ -5,6 +5,7 @@ from flask import jsonify
 
 app = Flask(__name__)
 
+users = []
 
 @app.route('/')
 def home():
@@ -23,10 +24,6 @@ def get_data():
     return dict’s key
     content-type is application/json
     """
-    users = {
-        "jane": {"name": "Jane", "age": 28, "city": "Los Angels"},
-        "john": {"name": "John", "age": 30, "city": "New York"}
-    }
     keys = []
     for key in users.keys():
         keys.append(key)
@@ -50,10 +47,10 @@ def get_username(username):
     return user info
     content-type is application/json
     """
-    users = {
-        "jane": {"name": "Jane", "age": 28, "city": "Los Angels"},
-        "john": {"name": "John", "age": 30, "city": "New York"}
-    }
+    # users = {
+    #     "jane": {"name": "Jane", "age": 28, "city": "Los Angels"},
+    #     "john": {"name": "John", "age": 30, "city": "New York"}
+    # }
     if username in users:
         return jsonify(users[username])
         # return json.dumps(users[username]), 200, {"Content-Type": "application/json"}
@@ -63,10 +60,6 @@ def get_username(username):
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
-    users = {
-        "jane": {"name": "Jane", "age": 28, "city": "Los Angels"},
-        "john": {"name": "John", "age": 30, "city": "New York"}
-    }
     data = request.get_json()
     users[data["username"]] = {
                 'username': data["username"],
