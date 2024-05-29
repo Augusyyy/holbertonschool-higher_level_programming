@@ -14,20 +14,35 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_header("Content-type", "application/json")
             self.end_headers()
             data = {"name": "John", "age": 30, "city": "New York"}
-            self.wfile.write(json.dumps(data).encode())
+            self.wfile.write(json.dumps(data).encode('utf-8'))
         elif self.path == '/':
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
         elif self.path == '/status':
+            status_data = {
+                "status": "OK"
+            }
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"OK")
+            self.wfile.write(json.dumps(status_data).encode('utf-8'))
+        elif self.path == '/info':
+            info_data = {
+                "version": "1.0",
+                "description": "A simple API built with http.server"
+            }
+            json_info = json.dumps(info_data)
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json_info.encode('utf-8'))
         else:
             self.send_response(404)
+            self.send_header('Content-type', 'text/plain')
             self.end_headers()
+            self.wfile.write(b"Endpoint not found")
 
 
 """Step 3: Start the server on a specific port (8000)"""
