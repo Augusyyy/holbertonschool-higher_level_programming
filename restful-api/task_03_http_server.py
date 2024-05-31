@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-""" a simple  http.server for testing"""
+"""
+a simple  http.server for testing
+"""
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
-    """Step 1: Create a subclass of http.server.BaseHTTPRequestHandler"""
 
+    """Step 1: Create a subclass of http.server.BaseHTTPRequestHandler"""
     def do_GET(self):
         """Step 2: Implement the do_GET method"""
         if self.path == '/data':
@@ -37,13 +39,15 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(json_info.encode('utf-8'))
         else:
             self.send_response(404)
-            self.send_header('Content-type', 'text/plain')
+            self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b"Endpoint not found")
+            self.wfile.write(b"404 Not Found")
 
 
 """Step 3: Start the server on a specific port (8000)"""
 PORT = 8000
+
+
 if __name__ == "__main__":
     with HTTPServer(('localhost', PORT), SimpleHTTPRequestHandler) as httpd:
         print(f"Serving on port {PORT}")
