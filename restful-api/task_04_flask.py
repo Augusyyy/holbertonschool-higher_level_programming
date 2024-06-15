@@ -5,7 +5,7 @@ from flask import jsonify
 
 app = Flask(__name__)
 
-users = {}
+all_users = {}
 
 
 @app.route('/')
@@ -19,16 +19,9 @@ def home():
 
 
 @app.route('/data')
-def get_data():
-    """
-    get
-    return dict’s key
-    content-type is application/json
-    """
-    keys = []
-    for key in users.keys():
-        keys.append(key)
-    return jsonify(keys)
+def data():
+    usernames = list(all_users)
+    return jsonify(usernames)
 
 
 @app.route('/status')
@@ -41,50 +34,28 @@ def get_status():
     return "OK"
 
 
-@app.route('/users/<username>')
-def get_username(username):
-    """
-    get
-    return user info
-    content-type is application/json
-    """
-    if username in users:
-        return jsonify(users[username])
-    else:
-        return jsonify({"error": "User not found"}), 404
-
-
 @app.route('/add_user', methods=['POST'])
 def add_user():
-    """add user"""
+    data = request.json
+    if data is None or data.get('username') is None:
+        return jsonify({'error': 'Username is required'}), 400
+    user = {
+        'username': data.get('username'),
+        'name': data.get('name'),
+        'age': data.get('age'),
+        'city': data.get('city')
+    }
+    all_users[user.get('username')] = user
+    return jsonify({'message': 'User added', 'user': user}), 201
 
-    data = request.get_json()
 
-    if not data or 'username' not in data or not data['username']:
-        return jsonify({"error": "Missing or empty username"}), 400
-
-    if any(field not in data or not data[field] for field in ['name', 'age', 'city']):
-        return jsonify({"error": "Missing required field"}), 400
-
-    username = data['username']
-    if username in users:
-        return jsonify({"error": "User already exists"}), 409
-
-    users[username] = {
-                'username': data["username"],
-                'name': data['name'],
-                'age': data['age'],
-                'city': data['city']
-            }
-    return jsonify({
-        'message': 'User added',
-        'user': {
-                'username': data["username"],
-                'name': data['name'],
-                'age': data['age'],
-                'city': data['city']
-            }
-        }), 201
+@app.route('/users/<username>')
+def user(username):
+    if username is None:
+        return jsonify({'error': 'Username is required'}), 400
+    if username not in all_users:
+        return jsonify({"error": "User not found"}), 404
+    return jsonify(all_users[username])
 
 
 if __name__ == '__main__':
