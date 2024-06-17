@@ -1,1 +1,1 @@
-DESCRIBE first_table;
+SHOW CREATE FROM first_table;
