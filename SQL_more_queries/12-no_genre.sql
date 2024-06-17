@@ -1,4 +1,4 @@
-
+-- Lists all shows in the database hbtn_0d_tvshows without a genre linked.
 SELECT s.title, g.genre_id
 FROM tv_shows AS s
 LEFT JOIN tv_show_genres AS g
