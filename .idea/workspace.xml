@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fba09a5-3f08-46e5-a3bd-7f1b80b65cbf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/1-filter_states.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/1-filter_states.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/13-model_state_delete_a.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/13-model_state_delete_a.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +65,7 @@
       <workItem from="1718587318129" duration="1465000" />
       <workItem from="1718628898362" duration="11323000" />
       <workItem from="1718722599549" duration="441000" />
-      <workItem from="1718786117507" duration="999000" />
+      <workItem from="1718786117507" duration="1305000" />
     </task>
     <servers />
   </component>
