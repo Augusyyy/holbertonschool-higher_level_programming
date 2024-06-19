@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-displays all values in the states table 
+displays all values
+in the states table
 of database where name matches the argument
 """
 
