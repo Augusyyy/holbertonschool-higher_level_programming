@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fba09a5-3f08-46e5-a3bd-7f1b80b65cbf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/0-select_states.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/0-select_states.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/1-filter_states.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/1-filter_states.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/2-my_filter_states.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/2-my_filter_states.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/3-my_safe_filter_states.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/3-my_safe_filter_states.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/4-cities_by_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/4-cities_by_state.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/5-filter_cities.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/5-filter_cities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/7-model_state_fetch_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/7-model_state_fetch_all.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/model_city.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/model_city.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/model_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/model_state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/relationship_city.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/relationship_city.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python-object_relational_mapping/relationship_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-object_relational_mapping/relationship_state.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +23,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/python-object_relational_mapping/0-select_states.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/python-object_relational_mapping/100-relationship_states_cities.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/python-object_relational_mapping/11-model_state_insert.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/python-object_relational_mapping/5-filter_cities.py" root0="FORCE_HIGHLIGHTING" />
@@ -74,6 +72,7 @@
       <workItem from="1718587318129" duration="1465000" />
       <workItem from="1718628898362" duration="11323000" />
       <workItem from="1718722599549" duration="441000" />
+      <workItem from="1718786117507" duration="315000" />
     </task>
     <servers />
   </component>
